@@ -1,0 +1,31 @@
+<div class="relative">
+    <button (click)="toggleDropdown()" class="flex items-center">
+        <img class="w-6 h-6" mx-auto my-auto src="/assets/menu.png" alt="">
+    </button>
+    <div *ngIf="isOpen" class="absolute right-0 mt-2 w-56 bg-white text-black rounded-lg shadow-lg">
+      <div class="p-4">
+        <div class="flex items-center">
+            <button class="ml-4 rounded-full flex items-center justify-center"><img class="w-14 h-14" src="/assets/user.png" alt=""></button>
+
+          <div class="ml-4">
+            <div class="font-bold">Username</div>
+            <div class="text-sm">Personal</div>
+            <div class="text-xs">email-example.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700">
+        <button class="block w-full py-2 text-left pl-4">Add account</button>
+        <button class="block w-full py-2 text-left pl-4">Convert to business</button>
+        <div class="py-2 pl-4">More options</div>
+        <button class="block w-full py-2 text-left pl-4">Settings</button>
+        <button class="block w-full py-2 text-left pl-4">Tune your home feed</button>
+        <button class="block w-full py-2 text-left pl-4">Install the Windows app</button>
+        <button class="block w-full py-2 text-left pl-4">Your privacy rights</button>
+        <button class="block w-full py-2 text-left pl-4">Get help</button>
+        <button class="block w-full py-2 text-left pl-4">See terms of service</button>
+        <button class="block w-full py-2 text-left pl-4">See privacy policy</button>
+        <button class="block w-full py-2 text-left pl-4">Be beta tester</button>
+        <button class="block w-full py-2 text-left pl-4">Log out</button>
+      </div>
+    </div>
