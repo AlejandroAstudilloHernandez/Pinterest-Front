@@ -18,7 +18,6 @@ export class RegisterService {
       pass,
       birthday
     }
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.baseUrl, body, { headers });
+    return this.http.post(this.baseUrl, body);
   }
 }

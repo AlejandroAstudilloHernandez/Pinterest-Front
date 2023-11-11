@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Route } from '@angular/router';
-import { RegisterService } from '../register.service';
+import { RegisterService } from '../services/register.service';
 
 @Component({
   selector: 'app-register',

@@ -1,6 +1,6 @@
-<div class="fixed top-0 w-full z-10 flex items-center justify-between h-16 bg-white text-black">
+<div *ngIf="authService.isAuthenticated()" class="fixed top-0 w-full z-10 flex items-center justify-between h-16 bg-white text-black">
     <div class="flex items-center pl-4">
-      <button><img class="w-8 h-8" src="/favicon.ico" alt=""></button>
+      <button><img class="w-8 h-8" src="/favicon.ico" alt="" [routerLink]="['/home']"></button>
       <button class="ml-4 text-white bg-black w-20 h-12 rounded-full">Home</button>
       <button class="ml-4 text-black">Create</button>
     </div>
@@ -15,7 +15,7 @@
       <button><img class="w-14 h-14" src="/assets/msg.png" alt=""></button>
       <button class="ml-4 rounded-full flex items-center justify-center"><img class="w-14 h-14" src="/assets/user.png" alt=""></button>
       <div class="relative">
-        <a href="#" class="mx-auto my-auto"><i class="">
+        <a class="mx-auto my-auto"><i class="">
             <app-dropdown-menu></app-dropdown-menu>
           </i>
         </a>
@@ -24,15 +24,13 @@
      
   </div>
 </div>
-<!-- 
-<div class="flex items-center justify-between h-16 px-4 bg-white shadow dark:bg-gray-800">
+
+<div *ngIf="!authService.isAuthenticated()" class="fixed top-0 w-full z-10 flex items-center justify-between h-16 bg-white text-black">
   <div class="flex items-center">
-      <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-      </svg>
+    <button><img class="w-8 h-8" src="/favicon.ico" alt="" [routerLink]="['/login']"></button>
   </div>
   <div class="flex items-center">
-      <button type="button" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">Log in</button>
-      <button type="button" class="ml-4 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 rounded-lg px-4 py-2 text-sm font-medium">Sign up</button>
+      <button type="button" class="ml-4 text-white bg-red-600 w-20 h-12 rounded-full" [routerLink]="['/login']">Log in</button>
+      <button type="button" class="ml-4 text-black bg-gray-200 w-20 h-12 rounded-full" [routerLink]="['/register']">Sign up</button>
   </div>
-</div> -->
+</div>
