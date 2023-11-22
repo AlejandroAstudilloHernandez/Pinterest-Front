@@ -1,18 +1,12 @@
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-<p>home works!</p>
-
-<p>home works!</p><p>home works!</p>
-<p>home works!</p>
-
+<main class="contenido">
+    <div class="imagenes">
+        <div *ngFor="let pin of homePins" class="card-image">
+            <!-- Convierte el Base64 a una URL de imagen utilizando la función getBase64Image -->
+            <img [src]="pin['imagenURL']" loading="lazy" [attr.data-pin-id]="pin.pinId" alt="" class="img">
+            <button class="button">
+                <!-- Utiliza el PinId en el enlace -->
+                <a>Save</a>
+            </button>
+        </div>
+    </div>
+</main>

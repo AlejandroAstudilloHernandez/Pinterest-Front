@@ -12,7 +12,10 @@ export class AuthService {
   private baseUrl = 'https://localhost:7130/api/Logins/login';
   private isLoggedIn = false;
 
-  constructor(private jwtHelper: JwtHelperService, private http: HttpClient) {}
+  constructor(private jwtHelper: JwtHelperService, private http: HttpClient) {
+    // Recuperar el estado de isLoggedIn desde localStorage al iniciar la aplicación
+    this.isLoggedIn = localStorage.getItem('IsLoggedIn') === 'true';
+  }
   
 
   login(email: string, pass: string): Observable<any> {
@@ -24,6 +27,7 @@ export class AuthService {
       tap(() => {
         // Actualiza el estado isLoggedIn a true después de una autenticación exitosa
         this.isLoggedIn = true;
+        localStorage.setItem('IsLoggedIn', 'true');
       })
     );
   }
@@ -31,6 +35,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     this.isLoggedIn = false;
+    localStorage.setItem('IsLoggedIn', 'false');
     // Redirige al usuario a la página de inicio de sesión o a la página principal
     window.location.href = '/login';    
   }
