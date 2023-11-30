@@ -8,17 +8,14 @@ import { AuthService } from '../services/auth.service';
 import { ProfileService } from '../services/profile.service';
 import Swal from 'sweetalert2';
 
-
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-saved-pins',
+  templateUrl: './saved-pins.component.html',
+  styleUrls: ['./saved-pins.component.scss']
 })
+export class SavedPinsComponent {
 
-export class HomeComponent {
-
-  homePins: HomePin[] = []; // Supongamos que tienes una propiedad pins con la lista de pines
+  savedPins: HomePin[] = []; // Supongamos que tienes una propiedad pins con la lista de pines
   error = '';
   public imageLoadError = false;
   userId: string | null = localStorage.getItem('userId');
@@ -26,8 +23,8 @@ export class HomeComponent {
   constructor(private profile: ProfileService,private authService: AuthService, private router: Router, private homeService: HomeService, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef){}
 
   convertirImagenesURL(): void {
-    if (this.homePins) {
-      this.homePins.forEach(pin => {
+    if (this.savedPins) {
+      this.savedPins.forEach(pin => {
         
         const base64Image = pin.image;
         
@@ -54,70 +51,17 @@ export class HomeComponent {
     
   }
 
-  savePin(pin: any){
-    const pinId = pin.pinId;
-    this.profile.postSavePin(pinId, this.userId).subscribe(
-      (response) => {
-        Swal.fire({
-          title: 'Publicación agregada',
-          icon: 'success'
-        })
-      },
-      (error) => {
-        Swal.fire({
-          title: 'Error',
-          text: 'Pin ya guardado.',
-          icon: 'error'
-        });
-      }
-    )
-  }
-
-
-  ngOnInit() {    
-    this.homeService.home().subscribe(
+  ngOnInit() {
+    this.profile.savedPins(this.userId).subscribe(
       (response: any[]) => {
-        this.homePins = response;
-        
-        // Mezcla el orden de los pines de manera aleatoria
-        this.homePins = this.shuffleArray(this.homePins);
+        this.savedPins = response;                
         
         this.convertirImagenesURL();
       },
       (error) => {
         this.error = 'Error al solicitar Pins';
       }
-    );
-
-    this.profile.profile(this.userId).subscribe(
-      (response: any) => {
-        localStorage.setItem('userName', response.userName);
-        localStorage.setItem('email', response.email);
-        localStorage.setItem('profilePhoto', response.profilePhoto);        
-      },
-      (error) => {
-        this.error = 'Error al cargar foto de perfil';
-      }
-    );
+    );    
   }
 
-  // Método para mezclar el orden de los elementos de una array
-  private shuffleArray(array: any[]): any[] {
-    let currentIndex = array.length;
-    let temporaryValue, randomIndex;
-
-    // Mientras haya elementos para mezclar
-    while (0 !== currentIndex) {
-      // Elige un elemento restante
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-
-      // Intercambia con el elemento actual
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  }
 }

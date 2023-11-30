@@ -5,12 +5,15 @@
     <div *ngIf="isOpen" class="absolute right-0 mt-2 w-56 bg-white text-black rounded-lg shadow-lg">
       <div class="p-4">
         <div class="flex items-center">
-            <button class="ml-4 rounded-full flex items-center justify-center"><img class="w-14 h-14" src="/assets/user.png" alt=""></button>
+          <button class="ml-2 rounded-full flex items-center justify-center"
+          [routerLink]="['/profile']">            
+            <img class="w-10 h-10 rounded-full" [src]="imgUrl" alt="">
+          </button>
 
-          <div class="ml-4">
-            <div class="font-bold">Username</div>
+          <div class="ml-2">
+            <div class="font-bold">{{username}}</div>
             <div class="text-sm">Personal</div>
-            <div class="text-xs">email-example.com</div>
+            <div class="text-xs">{{email}}</div>
           </div>
         </div>
       </div>

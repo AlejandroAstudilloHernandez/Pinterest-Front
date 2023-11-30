@@ -1,0 +1,30 @@
+<div *ngIf="authService.isAuthenticated()">
+<h1 class="flex items-center justify-center h-full mt-20">Create Pin</h1>
+<div class="flex items-center justify-center h-full mt-16">    
+    <form #createPin="ngForm" (ngSubmit)="OnSubmit()" class="flex flex-col items-center space-y-4">
+        <div class="flex items-center space-x-8">
+          <!-- Sección de la imagen -->
+          <label for="image" class="relative flex items-center justify-center w-96 h-96 bg-gray-200 rounded-lg cursor-pointer border-2 border-dashed border-gray-400">
+            <img [src]="imageUrl" alt="Uploaded Image" class="object-contain rounded-lg w-full h-full">            
+            <span class="absolute inset-0 flex flex-col items-center justify-center mt-20">
+              <svg *ngIf="mostrarTexto" class="gUZ OfC U9O kVc" height="32" width="32" viewBox="0 0 24 24" aria-label="Add files" role="img"><path d="M24 12c0-6.627-5.372-12-12-12C5.373 0 0 5.373 0 12s5.373 12 12 12c6.628 0 12-5.373 12-12zm-10.767 3.75a1.25 1.25 0 0 1-2.5 0v-3.948l-1.031 1.031a1.25 1.25 0 0 1-1.768-1.768L12 7l4.066 4.065a1.25 1.25 0 0 1-1.768 1.768l-1.065-1.065v3.982z"></path></svg>
+                <span *ngIf="mostrarTexto" class="text-sm text-gray-600">Choose a file or drag and drop it here</span>
+              <input id="image" type="file" class="hidden" (change)="onFileSelected($event)" name="image" [(ngModel)]="image" required>
+            </span>
+          </label>
+    
+          <!-- Formulario -->
+          <div class="flex flex-col items-center space-y-4">
+            <input type="text" placeholder="Title" class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-900" name="Title" [(ngModel)]="title" required>
+            <textarea placeholder="Description" class="w-80 h-24 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-900" name="Description" [(ngModel)]="description"></textarea>
+            <input type="text" placeholder="Alternative Text" class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-900" name="AltText" [(ngModel)]="altText">
+            <input type="text" placeholder="Link" class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-900" name="link" [(ngModel)]="link">
+            <label for="sensitive" class="flex items-center space-x-2">
+                <input id="sensitive" type="checkbox" class="rounded focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-900" name="sensitive" [(ngModel)]="sensitiveContent">
+                <span class="text-gray-700 dark:text-gray-400">Sensitive Content</span>
+            </label>    
+            <button type="submit" class="w-80 px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900" [disabled]="!createPin.valid">Publish</button>
+          </div>
+        </div>
+      </form>
+</div>

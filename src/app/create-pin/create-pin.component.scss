@@ -1,0 +1,32 @@
+#image {
+    display: none; // Para ocultar el cuadro de carga de archivos predeterminado
+  }
+  
+  #image-container {
+    width: 200px;
+    height: 200px;
+    background-color: #eeeeee;
+    border: 2px dashed #4B5563;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  #image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  #upload-label {
+    padding: 8px;
+    background-color: #3490dc;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  

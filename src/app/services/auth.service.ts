@@ -34,6 +34,8 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('profilePhoto');
     this.isLoggedIn = false;
     localStorage.setItem('IsLoggedIn', 'false');
     // Redirige al usuario a la página de inicio de sesión o a la página principal
@@ -43,14 +45,5 @@ export class AuthService {
   isAuthenticated(): boolean {    
     return this.isLoggedIn;
   }
-
-  getLoggedInUserId(): string | null {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const decodedToken = this.jwtHelper.decodeToken(token);
-      return decodedToken ? decodedToken.userId : null;
-    }
-    return null;
-  }  
 }
 

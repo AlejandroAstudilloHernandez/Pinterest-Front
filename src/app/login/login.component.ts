@@ -36,8 +36,9 @@ export class LoginComponent {
     //const credentials = { email: this.email, password: this.pass };
 
     this.authService.login(this.email, this.pass).subscribe(
-      (token: string) => {
-        localStorage.setItem('token', token);
+      (response) => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('userId', response.userId);      
         // Redirige a la página de inicio (ajusta la ruta según tu configuración)
         this.router.navigate(['/home']);
       },

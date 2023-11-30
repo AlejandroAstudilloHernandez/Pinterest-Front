@@ -1,0 +1,16 @@
+/* En el archivo de estilos (puedes ajustar los estilos según tus preferencias) */
+button {
+    color: black;
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+    border-bottom: 2px solid transparent; /* Línea por defecto transparente */
+  }
+  
+  button.selected {
+    border-bottom-color: black; /* Línea negra para botones seleccionados */
+  }
+  

@@ -6,24 +6,22 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ProfileService } from '../services/profile.service';
+import { SearchService } from '../services/search.service';
 import Swal from 'sweetalert2';
 
-
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss']
 })
-
-export class HomeComponent {
+export class SearchComponent {
 
   homePins: HomePin[] = []; // Supongamos que tienes una propiedad pins con la lista de pines
   error = '';
   public imageLoadError = false;
   userId: string | null = localStorage.getItem('userId');
 
-  constructor(private profile: ProfileService,private authService: AuthService, private router: Router, private homeService: HomeService, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef){}
+  constructor(private search: SearchService,private profile: ProfileService,private authService: AuthService, private router: Router, private homeService: HomeService, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef){}
 
   convertirImagenesURL(): void {
     if (this.homePins) {
@@ -41,6 +39,25 @@ export class HomeComponent {
       // Forzar la detección de cambios manualmente
       this.cdr.detectChanges();
     }
+  }
+
+  ngOnChanges(): void {
+    // Lógica para manejar cambios en las propiedades de entrada
+    this.buscar = localStorage.getItem('buscar');
+    this.performSearch();
+  }
+
+  public performSearch(): void {
+    this.search.search(this.buscar).subscribe(
+      (response: any) => {
+        this.homePins = response;
+        this.homePins = this.shuffleArray(this.homePins);
+        this.convertirImagenesURL();
+      },
+      (error) => {
+        this.error = 'Error al solicitar Pins';
+      }
+    );
   }
 
   guardarPinId(pin: any): void {
@@ -74,9 +91,10 @@ export class HomeComponent {
   }
 
 
-  ngOnInit() {    
-    this.homeService.home().subscribe(
-      (response: any[]) => {
+  buscar: string | null = localStorage.getItem('buscar');
+  ngOnInit() {
+    this.search.search(this.buscar).subscribe(
+      (response: any) => {
         this.homePins = response;
         
         // Mezcla el orden de los pines de manera aleatoria
@@ -120,4 +138,5 @@ export class HomeComponent {
 
     return array;
   }
+
 }

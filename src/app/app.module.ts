@@ -11,6 +11,12 @@ import { LoginComponent } from './login/login.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { HomeComponent } from './home/home.component';
+import { CreatePinComponent } from './create-pin/create-pin.component';
+import { PinComponent } from './pin/pin.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SavedPinsComponent } from './saved-pins/saved-pins.component';
+import { CreatedPinsComponent } from './created-pins/created-pins.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,13 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     DropdownMenuComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    CreatePinComponent,
+    PinComponent,
+    ProfileComponent,
+    SavedPinsComponent,
+    CreatedPinsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

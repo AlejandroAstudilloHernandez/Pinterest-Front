@@ -22,23 +22,22 @@ export class AuthInterceptor implements HttpInterceptor {
       const token = localStorage.getItem('token');
       const authReq = request.clone({
         setHeaders: { Authorization: `Bearer ${token}` },
-      });      
+      });
+      // ¡No olvides retornar la solicitud clonada!
+      return next.handle(authReq);
     }
     
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
 
         if (err.status === 401) {
+          console.log(localStorage.getItem('token'));
           this.router.navigateByUrl('/login');
         }
 
-        return throwError( err );
+        return throwError(err);
 
       })
     );
-      
-    
-
-    return next.handle(request);
   }
 }

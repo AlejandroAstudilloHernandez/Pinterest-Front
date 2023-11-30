@@ -1,14 +1,10 @@
 <main class="contenido">
     <div class="imagenes">
-      <div *ngFor="let pin of homePins" class="card-image">
+      <div *ngFor="let pin of savedPins" class="card-image">
         <!-- Utiliza (click) para llamar a la función y pasa el valor directamente -->
         <button (click)="guardarPinId(pin)">
           <img [src]="pin['imagenURL']" loading="lazy" [attr.data-pin-id]="pin.pinId" alt="" class="img">
-        </button>
-        <button class="button" (click)="savePin(pin)">
-          <a [attr.data-pin-id]="pin.pinId">Save</a>
-        </button>
+        </button>        
       </div>
     </div>
   </main>
-  
