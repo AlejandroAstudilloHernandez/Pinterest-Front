@@ -19,6 +19,7 @@ export class ProfileComponent {
   userId: string | null = localStorage.getItem('userId');
   name: string = '';
   lastname: string = '';
+  followings = 0;
   convertirImagenesURL(): void {  
     const base64Image = localStorage.getItem('profilePhoto');
     const imageUrl = 'data:image/webp;base64,' + base64Image;

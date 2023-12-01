@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class HomeService {
-  private baseUrl = 'https://localhost:7130/api/HomesPins';
+  private baseUrl = 'https://www.pinterest-clone.somee.com/api/HomesPins';
 
   constructor(private http: HttpClient) { }
 

@@ -8,7 +8,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class RegisterService {
 
-  private baseUrl = 'https://localhost:7130/api/Register';
+  private baseUrl = 'https://www.pinterest-clone.somee.com/api/Register';
 
   constructor(private http: HttpClient) { }
 
