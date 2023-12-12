@@ -8,8 +8,8 @@ import { CreatePinModel } from '../models/createPin.model';
   providedIn: 'root'
 })
 export class SettingsService {
-  //private baseUrl = 'https://www.pinterest-clone.somee.com/api/';
-  private baseUrl = 'https://localhost:7130/api/';
+  private baseUrl = 'https://www.pinterest-clone.somee.com/api/';
+  //private baseUrl = 'https://localhost:7130/api/';
 
   constructor(private http: HttpClient) { }
 

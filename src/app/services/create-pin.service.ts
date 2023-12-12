@@ -9,8 +9,8 @@ import { CreatePinModel } from '../models/createPin.model';
 })
 export class CreatePinService {
 
-  //private baseUrl = 'https://www.pinterest-clone.somee.com/api/CreatesPins/create';
-  private baseUrl = 'https://localhost:7130/api/CreatesPins/create';
+  private baseUrl = 'https://www.pinterest-clone.somee.com/api/CreatesPins/create';
+  //private baseUrl = 'https://localhost:7130/api/CreatesPins/create';
   
 
   constructor(private http: HttpClient) { }
