@@ -1,0 +1,23 @@
+<div class="p-8">
+    <h2 class="text-xl font-bold mb-2">Account management</h2>
+    <p class="text-sm text-gray-600 mb-4">Make changes to your personal information or account type.</p>
+    <form (ngSubmit)="OnSubmit()" class="mb-8">
+        <h3 class="text-lg font-bold mb-1">Your account</h3>
+        <p class="text-xs text-gray-500 mb-1">Email * Private</p>
+        <input type="email" class="w-full p-2 mb-4 bg-gray-100 rounded-lg" placeholder="{{emailActual}}" [(ngModel)]="email">
+        <p class="text-xs text-gray-500 mb-1">Password</p>
+        <input type="password" class="w-full p-2 mb-4 bg-gray-100 rounded-lg" placeholder="Change Password" autocomplete="new-password" [(ngModel)]="pass">
+        <h3 class="text-lg font-bold mb-1">Personal information</h3>
+        <p class="text-xs text-gray-500 mb-1">Birthday</p>
+        <input type="date" class="w-full p-2 mb-4 bg-gray-100 rounded-lg" [(ngModel)]="birthday">
+        <button type="submit" class="ml-2 text-black w-30 rounded-full bg-gray-200 hover:bg-gray-200 focus:ring-4 focus:ring-grey-100 font-medium text-sm px-5 py-2.5">Save</button>
+    </form>
+    <h2 class="text-xl font-bold mb-2">Delete your data and account</h2>
+    <!-- En tu componente.html -->
+    <div class="flex items-center">
+        <p class="text-sm text-gray-600 mb-4">Permanently delete your data and everything associated with your account</p>
+        <input type="checkbox" [(ngModel)]="isDeleteChecked" class="transform scale-150 ml-4">
+    </div>    
+    <button type="button" (click)="deleteAccount()" class="ml-2 text-black w-30 rounded-full bg-gray-200 hover:bg-gray-200 focus:ring-4 focus:ring-grey-100 font-medium text-sm px-5 py-2.5" [disabled]="!isDeleteChecked">Delete account</button>
+
+  </div>

@@ -9,7 +9,9 @@ import { CreatePinModel } from '../models/createPin.model';
 })
 export class ProfileService {
 
-  private baseUrl = 'https://www.pinterest-clone.somee.com/api/';
+  //private baseUrl = 'https://www.pinterest-clone.somee.com/api/';
+  private baseUrl = 'https://localhost:7130/api/';
+
 
   constructor(private http: HttpClient) { }
 

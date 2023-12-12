@@ -17,6 +17,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { SavedPinsComponent } from './saved-pins/saved-pins.component';
 import { CreatedPinsComponent } from './created-pins/created-pins.component';
 import { SearchComponent } from './search/search.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { SearchComponent } from './search/search.component';
     ProfileComponent,
     SavedPinsComponent,
     CreatedPinsComponent,
-    SearchComponent
+    SearchComponent,
+    EditProfileComponent,
+    AccountSettingsComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

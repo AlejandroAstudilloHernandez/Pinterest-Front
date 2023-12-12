@@ -9,7 +9,9 @@ import { CreatePinModel } from '../models/createPin.model';
 })
 export class CreatePinService {
 
-  private baseUrl = 'https://www.pinterest-clone.somee.com/api/CreatesPins/create';
+  //private baseUrl = 'https://www.pinterest-clone.somee.com/api/CreatesPins/create';
+  private baseUrl = 'https://localhost:7130/api/CreatesPins/create';
+  
 
   constructor(private http: HttpClient) { }
   createPin(image: File, title: string, description: any, altText: any, link: any, userId: any, url: any, sensitiveContent: boolean){    
@@ -24,6 +26,7 @@ export class CreatePinService {
     formData.append('Url', url);
     formData.append('SensitiveContent', sensitiveContentString);    
     console.log(formData.getAll);
+    console.log(this.baseUrl,formData);
     return this.http.post(this.baseUrl,formData);
   }
 

@@ -9,7 +9,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-  private baseUrl = 'https://www.pinterest-clone.somee.com/api/Logins/login';
+  //private baseUrl = 'https://www.pinterest-clone.somee.com/api/Logins/login';
+  private baseUrl = 'https://localhost:7130/api/Logins/login';
   private isLoggedIn = false;
 
   constructor(private jwtHelper: JwtHelperService, private http: HttpClient) {

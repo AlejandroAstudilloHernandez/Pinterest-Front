@@ -20,6 +20,8 @@ export class ProfileComponent {
   name: string = '';
   lastname: string = '';
   followings = 0;
+  information: string = "";
+  webSite: string = "";
   convertirImagenesURL(): void {  
     const base64Image = localStorage.getItem('profilePhoto');
     const imageUrl = 'data:image/webp;base64,' + base64Image;
@@ -51,6 +53,8 @@ export class ProfileComponent {
          this.username = profile.userName;
          this.name = profile.name;
          this.lastname = profile.lastname;
+         this.information = profile.information;
+         this.webSite = profile.webSite;
          // Puedes asignar más propiedades del perfil según sea necesario
        },
        error => {

@@ -9,6 +9,9 @@ import { CreatePinComponent } from './create-pin/create-pin.component';
 import { PinComponent } from './pin/pin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {path: "register", component: RegisterComponent},
@@ -20,6 +23,9 @@ const routes: Routes = [
   {path: "pin", component: PinComponent},
   {path: "profile", component: ProfileComponent},  
   {path: "search", component: SearchComponent},
+  {path: "account-settings", component: AccountSettingsComponent},
+  {path: "edit-profile", component: EditProfileComponent},
+  {path: "settings", component: SettingsComponent},
   {path: "**", component: LoginComponent}
 ];
 
